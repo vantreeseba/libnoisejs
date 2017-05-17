@@ -1,0 +1,12 @@
+{
+  "name": "libnoisejs",
+  "version": "0.0.0",
+  "description": "Libnoise ported to JS and using webgl",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify src/index.js -t glslify -o docs/libnoise.js",
+    "watch": "watchify src/index.js -t glslify -o docs/libnoise.js -d" 
+  },
+  "author": "vantreeseba",
+  "license": "MIT"
+}
