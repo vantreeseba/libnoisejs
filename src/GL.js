@@ -27,7 +27,8 @@ class GL {
     this.dt = 0;
 
     // this._selectProgram(this.createProgram(glslify('./glsl/mainFrag.glsl')));
-    this._selectProgram(this.createProgram(glslify('./glsl/test/cool.glsl')));
+    // this._selectProgram(this.createProgram(glslify('./glsl/test/cool.glsl')));
+    this._selectProgram(this.createProgram(glslify('./glsl/test/laser.glsl')));
 
     // const color = this._getUniformLocation('options.color');
     const time = this._getUniformLocation('time');
@@ -38,7 +39,8 @@ class GL {
     this.uniforms.time = time;
 
     this.context.uniform1f(time, this.time);
-    this.context.uniform2fv(resolution, new Float32Array([256, 256]));
+    // this.context.uniform2fv(resolution, new Float32Array([256, 256]));
+    this.context.uniform2fv(resolution, new Float32Array([canvas.width, canvas.height]));
 
     this.foo = 0;
   }
