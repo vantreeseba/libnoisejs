@@ -1,3 +1,88 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+window.GL = __webpack_require__(2);
+
+const foo = 3
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /**
  * GL
  */
@@ -23,7 +108,7 @@ class GL {
     this.dtTime = 0;
     this.dt = 0;
 
-    this._selectProgram(this.createProgram(require('./glsl/mainFrag.glsl')));
+    this._selectProgram(this.createProgram(__webpack_require__(5)));
     // this._selectProgram(this.createProgram(require('./glsl/test/laser.glsl')));
 
     const color = this._getUniformLocation('options.color');
@@ -81,7 +166,7 @@ class GL {
   _createPassThroughVertexShader(){
     const self = this,
       gl = self.context,
-      passThrough = require('./glsl/passThrough.glsl');
+      passThrough = __webpack_require__(4);
 
     self.vertexShader = gl.createShader(gl.VERTEX_SHADER);
     self.context.shaderSource(self.vertexShader, passThrough);
@@ -200,3 +285,22 @@ class GL {
 }
 
 module.exports = GL;
+
+
+/***/ }),
+/* 3 */,
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = "// vertex shader for a single quad\n// work is performed in the operation specific texture shader\n\nprecision highp float;\n\nattribute vec3 pos;\nattribute vec2 tex;\nvarying vec2   outTex;\nvoid main(void)\n{\n  // just pass the position and texture coords\n  gl_Position = vec4(pos, 1.0);\n  outTex = tex;\n}\n"
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = "precision mediump float;\n\nstruct test_options {\n  vec4 color;\n};\n\nuniform test_options options;\n\nvoid main() {\n  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // options.color; \n}\n\n"
+
+/***/ })
+/******/ ]);
+//# sourceMappingURL=app.js.map
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuanM/OGMwMDQxZjRiNjc0NzFmOGFiMzIiLCJzb3VyY2VSb290IjoiIn0=

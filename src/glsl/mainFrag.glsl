@@ -7,5 +7,6 @@ struct test_options {
 uniform test_options options;
 
 void main() {
-  gl_FragColor = options.color; 
+  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // options.color; 
 }
+

@@ -8,4 +8,4 @@ vec3 constant(float value) {
   return vec3(value);
 }
 
-#pragma glslify: export(constant);
+//#pragma glslify: export(constant);

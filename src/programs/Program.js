@@ -1,5 +1,3 @@
-var glslify = require('glslify');
-
 /**
  * Program
  */
@@ -10,7 +8,7 @@ class Program {
    * @return {undefined}
    */
   constructor(gl, config) {
-    this.gl = gl;
+  this.gl = gl;
     this._fragmentSrc = config.FragSrc;
     this.program = gl.createProgram(this._fragmentSrc);
   }
